@@ -73,7 +73,7 @@ arrows(depth_values, err_cv[,1]-err_cv[,2],depth_values, err_cv[,1]+err_cv[,2],
 #dev.off()
 ```
 
-* Choose the "best"" parameter value
+* Choose the "best" parameter value
 ```{r}
 depth_best <- depth_values[which.min(err_cv[,1])]
 par_best <- list(depth=depth_best)
