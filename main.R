@@ -7,7 +7,7 @@
 ### ADS Spring 2016
 
 ### Specify directories
-setwd("./proj3_sample")
+#setwd("./proj3_sample")
 
 img_train_dir <- "./data/zipcode_train/"
 img_test_dir <- "./data/zipcode_test/"
