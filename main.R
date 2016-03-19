@@ -2,27 +2,37 @@
 ### Main execution script for experiments ###
 #############################################
 
-### Author: Yuting Ma
-### Project 3
-### ADS Spring 2016
-
 ### Specify directories
-setwd("./proj3_sample")
+setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\")
 
-img_train_dir <- "./data/zipcode_train/"
-img_test_dir <- "./data/zipcode_test/"
+img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
+dir_names <- list.files(img_dir)
 
-### Import training images class labels
-label_train <- read.table("./data/zip_train_label.txt", header=F)
-label_train <- as.numeric(unlist(label_train) == "9")
+img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
+img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test\\"
+
+### Import training images Breed Labels
+
+label_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\index_train.txt", header=F)
+label_test <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\index_test.txt", header=F)
+
+### Import Breed Labels
+breed_index_test <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_test.txt", header=F)
+breed_index_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_train.txt", header=F)
+
+
+###############################################################################################
+
 
 ### Construct visual feature
 source("./lib/feature.R")
 
-tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_zip_train"))
-tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_zip_test"))
+tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_train"))
+tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_test"))
+
 save(dat_train, file="./output/feature_train.RData")
 save(dat_train, file="./output/feature_test.RData")
+
 
 ### Train a classification model with training images
 source("./lib/train.R")
@@ -47,7 +57,7 @@ plot(depth_values, err_cv[,1], xlab="Interaction Depth", ylab="CV Error",
 points(depth_values, err_cv[,1], col="blue", pch=16)
 lines(depth_values, err_cv[,1], col="blue")
 arrows(depth_values, err_cv[,1]-err_cv[,2],depth_values, err_cv[,1]+err_cv[,2], 
-      length=0.1, angle=90, code=3)
+       length=0.1, angle=90, code=3)
 dev.off()
 
 # Choose the best parameter value
@@ -67,4 +77,3 @@ cat("Time for constructing training features=", tm_feature_train[1], "s \n")
 cat("Time for constructing testing features=", tm_feature_test[1], "s \n")
 cat("Time for training model=", tm_train[1], "s \n")
 cat("Time for making prediction=", tm_test[1], "s \n")
-
