@@ -51,9 +51,9 @@ write(index_test,file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data
 ###Create Breed Labels
 ```{r}
 #For Training Set
-breed_name <- rep(NA, length(img_train_dir))
-for(i in 1:length(dir_names)){
-  tt <- unlist(strsplit(img_train_dir[i], "_"))
+breed_name <- rep(NA, length(train_names))
+for(i in 1:length(train_names)){
+  tt <- unlist(strsplit(train_names[i], "_"))
   tt <- tt[-length(tt)]
   breed_name[i] = paste(tt, collapse="_", sep="")
 }
@@ -73,7 +73,7 @@ write(index_train, "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\b
 #For Testing Set
 breed_name <- rep(NA, length(test_names))
 for(i in 1:length(test_names)){
-  tt <- unlist(strsplit(img_test_dir[i], "_"))
+  tt <- unlist(strsplit(test_names[i], "_"))
   tt <- tt[-length(tt)]
   breed_name[i] = paste(tt, collapse="_", sep="")
 }
