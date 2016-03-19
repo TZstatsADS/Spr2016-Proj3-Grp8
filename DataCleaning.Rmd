@@ -63,13 +63,11 @@ cat_breed <- c("Abyssinian", "Bengal", "Birman", "Bombay", "British_Shorthair", 
 iscat_train <- breed_name %in% cat_breed
 y_cat_train <- as.numeric(iscat_train)
 
-head(y_cat_train)
 
 #Breed Indexing Set
 index_train <- c(y_cat_train)
 write(index_train, "C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\breed_index_train.txt")
 
-##################
 #For Testing Set
 breed_name <- rep(NA, length(test_names))
 for(i in 1:length(test_names)){
@@ -79,10 +77,16 @@ for(i in 1:length(test_names)){
 }
 cat_breed <- c("Abyssinian", "Bengal", "Birman", "Bombay", "British_Shorthair", "Egyptian_Mau", "Maine_Coon", "Persian", "Ragdoll", "Russian_Blue", "Siamese", "Sphynx")
 
+
 iscat_test <- breed_name %in% cat_breed
 y_cat_test <- as.numeric(iscat_test)
 
 head(y_cat_test)
+
+=======
+
+iscat_test <- breed_name %in% cat_breed
+y_cat_test <- as.numeric(iscat_test)
 
 #Indexing Set
 index_test <- c(y_cat_test)
@@ -90,6 +94,8 @@ index_test <- c(y_cat_test)
 write(index_test, "C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\breed_index_test.txt")
 
 ```
+##############################################################
+
 ##############################################################
 
 ###Add in Annotations
