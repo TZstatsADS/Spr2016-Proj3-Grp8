@@ -3,30 +3,30 @@
 #############################################
 
 ### Specify directories
-setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\")
+setwd("C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\")
 
-img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg"
+dir_images <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg"
 dir_names <- list.files(dir_images)
 
-img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\train\\"
-img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\test\\"
+img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train"
+img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test"
 
-### Import training images Breed Labels
-label_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\label_train.txt", header=F)
+### Import training images class labels
+label_train <- read.table("C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\index_train.txt", header=F)
+label_test <- read.table("C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\index_test.txt", header=F)
+  
+#Breed Labels
+breed_label_train <- read.table("C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\breed_index_train.txt", header=F)
+breed_label_test <- read.table("C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\breed_index_test.txt", header=F)
 
-####################################################################################################
-#This is where we are stuck
-
+######################################
 ### Construct visual feature
 source("./lib/feature.R")
 
-tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_train"))
-tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_test"))
-
+tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_zip_train"))
+tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_zip_test"))
 save(dat_train, file="./output/feature_train.RData")
-save(dat_train, file="./output/feature_test.RData")
-
-###############################################################################################
+save(dat_test, file="./output/feature_test.RData")
 
 ### Train a classification model with training images
 source("./lib/train.R")
