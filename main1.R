@@ -15,11 +15,13 @@ img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\test
 label_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\label_train.txt", header=F)
 
 ####################################################################################################
+#This is where we are stuck
+
 ### Construct visual feature
 source("./lib/feature.R")
 
-tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_zip_train"))
-tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_zip_test"))
+tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_train"))
+tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_test"))
 
 save(dat_train, file="./output/feature_train.RData")
 save(dat_train, file="./output/feature_test.RData")
