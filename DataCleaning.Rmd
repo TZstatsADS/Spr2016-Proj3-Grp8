@@ -1,7 +1,6 @@
 ---
 title: "Data Cleaning and Preparation"
 author: "Nicole LaPointe Jameson"
-date: "March 6, 2016"
 output: html_document
 ---
 
@@ -9,7 +8,6 @@ output: html_document
 ```{r, message=FALSE}
 #Set Seed for randomization subsampling
 set.seed(2145)
-
 #Packages Used
 library(EBImage)
 library(Momocs)
@@ -20,7 +18,6 @@ library(XML)
 ### Specify directories
 
 ```{r, eval=FALSE}
-
 setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg")
 
 #Sample size for Train: 70%
@@ -28,52 +25,72 @@ setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg")
 #5161 is 70%
 
 #Paritioning of Data
-full_set <- dir()
-
 dir_images <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg"
 dir_names <- list.files(dir_images)
 
 ```
 
+###Training and Testing set Creation
+```{r}
+img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train"
+train_names <- list.files(img_train_dir)
+
+img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test"
+test_names <- list.files(img_test_dir)
+
+#Index Sets of Names
+index_train <- c(train_names)
+write(index_train,file="C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\index_train.txt")
+
+index_test <- c(test_names)
+write(index_test,file="C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\index_test.txt")
+
+
+```
+
+
 ###Create Breed Labels
 ```{r}
-breed_name <- rep(NA, length(dir_names))
+#For Training Set
+breed_name <- rep(NA, length(img_train_dir))
 for(i in 1:length(dir_names)){
-  tt <- unlist(strsplit(dir_names[i], "_"))
+  tt <- unlist(strsplit(img_train_dir[i], "_"))
   tt <- tt[-length(tt)]
   breed_name[i] = paste(tt, collapse="_", sep="")
 }
-cat_breed <- c("Abyssinian", "Bengal", "Birman", "Bombay", "British_Shorthair", "Egyptian_Mau",
-               "Maine_Coon", "Persian", "Ragdoll", "Russian_Blue", "Siamese", "Sphynx")
+cat_breed <- c("Abyssinian", "Bengal", "Birman", "Bombay", "British_Shorthair", "Egyptian_Mau", "Maine_Coon", "Persian", "Ragdoll", "Russian_Blue", "Siamese", "Sphynx")
 
-iscat <- breed_name %in% cat_breed
-y_cat <- as.numeric(iscat)
+iscat_train <- breed_name %in% cat_breed
+y_cat_train <- as.numeric(iscat_train)
 
-#Combined Matrix of Image and Breed
+head(y_cat_train)
 
-imgAndBreed <- cbind(dir_names,breed_name)
+#Breed Indexing Set
+index_train <- c(y_cat_train)
+write(index_train, "C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\breed_index_train.txt")
 
-write(imgAndBreed, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\imgAndBreed.R")
+##################
+#For Testing Set
+breed_name <- rep(NA, length(test_names))
+for(i in 1:length(test_names)){
+  tt <- unlist(strsplit(img_test_dir[i], "_"))
+  tt <- tt[-length(tt)]
+  breed_name[i] = paste(tt, collapse="_", sep="")
+}
+cat_breed <- c("Abyssinian", "Bengal", "Birman", "Bombay", "British_Shorthair", "Egyptian_Mau", "Maine_Coon", "Persian", "Ragdoll", "Russian_Blue", "Siamese", "Sphynx")
+
+iscat_test <- breed_name %in% cat_breed
+y_cat_test <- as.numeric(iscat_test)
+
+head(y_cat_test)
+
+#Indexing Set
+index_test <- c(y_cat_test)
+
+write(index_test, "C:\\Users\\NMLJ\\Desktop\\cycle3cvd-team8\\data\\breed_index_test.txt")
 
 ```
-
-
-###Training and Testing set Creation
-```{r}
-
-train_set <- sample(imgAndBreed, 5161, replace=FALSE)
-test_set <- imgAndBreed[!imgAndBreed %in% train_set]
-
-write(train_set, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\train\\train_Set.R")
-
-write(test_set, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\test\\test_Set.R")
-
-##FIRST EDIT: Write Images to Train and Test Set Files
-
-img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\train\\"
-
-img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\test\\"
-```
+##############################################################
 
 ###Add in Annotations
 
@@ -101,7 +118,6 @@ print(myxml)
 
 ```{r}
 library(EBImage)
-
 #Resizing Train Images
 
 setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\train")
