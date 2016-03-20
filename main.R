@@ -3,23 +3,25 @@
 #############################################
 
 ### Specify directories
-setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\")
+#setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\")
+setwd("~/Documents/cycle3cvd-team8")
 
-img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
-dir_names <- list.files(img_dir)
+#img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
+#dir_names <- list.files(img_dir)
 
-img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
-img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test\\"
+#img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
+#img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test\\"
+img_train_dir <- "~/Desktop/train"
+img_test_dir <- "~/Desktop/test"
 
 ### Import training images Breed Labels
 
-label_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\index_train.txt", header=F)
-label_test <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\index_test.txt", header=F)
+label_train <- read.table("data/index_train.txt", header=F)
+label_test <- read.table("data/index_test.txt", header=F)
 
 ### Import Breed Labels
-breed_index_test <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_test.txt", header=F)
-breed_index_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_train.txt", header=F)
-
+breed_index_test <- scan("data/breed_index_test.txt")
+breed_index_train <- scan("data/breed_index_train.txt")
 
 ###############################################################################################
 
