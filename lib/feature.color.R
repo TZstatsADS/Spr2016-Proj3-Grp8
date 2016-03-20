@@ -17,7 +17,7 @@ feature <- function(img_dir, img_name, data_name=NULL){
   ### load libraries
   library("EBImage")
   
-  n_files <- length(list.files(img_dir))
+  n_files <- length(list.files(img_train_dir))
   
   ### determine img dimensions
   #img0 <-  readImage(paste0(img_dir, img_name, "_", 1, ".jpg"))
@@ -36,11 +36,12 @@ feature <- function(img_dir, img_name, data_name=NULL){
   ### RBG Color Extraction
   
   nR <- 10
-  nG <- 8
+  #nG <- 8
+  nG <- 4
   nB <- 10
-  feature <- array(dim=c(n_files,nR*nG*nB))
-  for (i in 1:n_files){
-    img <- readImage(list.files(img_dir)[i])
+  feature <- array(dim=c(400,nR*nG*nB))
+  for (i in 1:400){
+    img <- readImage(list.files(img_train_dir)[i])
     mat <- imageData(img)
     
     rBin <- seq(0, 1, length.out=nR)
@@ -49,13 +50,25 @@ feature <- function(img_dir, img_name, data_name=NULL){
     freq_rgb <- as.data.frame(table(factor(findInterval(mat[,,1], rBin), levels=1:nR), 
                                     factor(findInterval(mat[,,2], gBin), levels=1:nG), 
                                     factor(findInterval(mat[,,3], bBin), levels=1:nB)))
-    rgb_feature <- as.numeric(freq_rgb$Freq)/(ncol(mat)*nrow(mat)) 
+    rgb_feature <- as.numeric(freq_rgb$Freq)/(ncol(mat)*nrow(mat))
     feature[i,] <- rgb_feature
   }
   
   
-
-  
+  feature.t <- array(dim=c(400,nR*nG*nB))
+  for (i in 1:400){
+    img <- readImage(list.files(img_test_dir)[i])
+    mat <- imageData(img)
+    
+    rBin <- seq(0, 1, length.out=nR)
+    gBin <- seq(0, 1, length.out=nG)
+    bBin <- seq(0, 1, length.out=nB)
+    freq_rgb <- as.data.frame(table(factor(findInterval(mat[,,1], rBin), levels=1:nR), 
+                                    factor(findInterval(mat[,,2], gBin), levels=1:nG), 
+                                    factor(findInterval(mat[,,3], bBin), levels=1:nB)))
+    rgb_feature <- as.numeric(freq_rgb$Freq)/(ncol(mat)*nrow(mat))
+    feature.t[i,] <- rgb_feature
+  }
   
   
   ### output constructed features
@@ -63,4 +76,5 @@ feature <- function(img_dir, img_name, data_name=NULL){
     save(dat, file=paste0("./output/feature_", data_name, ".RData"))
   }
   return(dat)
-}
+  
+#}
