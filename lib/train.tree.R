@@ -1,3 +1,7 @@
+
+
+train <- function(dat_train, label_train, par=NULL){
+
 library("gbm")
 
 ### Train with gradient boosting model
@@ -22,11 +26,10 @@ library("gbm")
 ## Tree Classification
 
 library(rpart)
-tree.data <- data.frame(feature)
-tree <- rpart(breed_index_train1 ~.,tree.data,method = "class",
-              control = rpart.control(minsplit=50, cp=0.001))
-printcp(tree)
-summary(tree)
-tree.test <- data.frame(feature.t)
-pred <- predict(tree,tree.test,type = "class" )
-sum(predict(tree,tree.test,type = "class" )==breed_index_test1)/n_files1
+tree.data <- data.frame(dat_train)
+tree <- rpart(label_train ~.,tree.data,method = "class",
+              control = rpart.control(minsplit=par, cp=0.001))
+#printcp(tree)
+#summary(tree)
+
+}
