@@ -66,8 +66,8 @@ head(y_cat_train)
 
 #Breed Indexing Set
 index_train <- c(y_cat_train)
-write(index_train, "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_train.txt", ncolumns = 1)
-
+#write(index_train, "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_train.txt", ncolumns = 1)
+write(index_train, "~/Documents/cycle3cvd-team8/data/breed_index_train1.txt", ncolumns = 1)
 ##################
 
 #For Testing Set
@@ -85,8 +85,8 @@ y_cat_test <- as.numeric(iscat_test)
 
 #Breed Indexing Set
 index_test <- c(y_cat_test)
-
-write(index_test, "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_test.txt", ncolumns = 1)
+#write(index_test, "C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_test.txt", ncolumns = 1)
+write(index_test, "~/Documents/cycle3cvd-team8/data/breed_index_test1.txt", ncolumns = 1)
 
 ```
 ##############################################################
