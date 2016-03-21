@@ -30,8 +30,8 @@ save(dat_test, file="./output/feature_test.RData")
 ####
 
 ### Train a classification model with training images
-source("./lib/train.svm.R")
-source("./lib/test.svm.R")
+source("./lib/train.tree.R")
+source("./lib/test.tree.R")
 
 ### Model selection with cross-validation
 # Choosing between different values of interaction depth for GBM
