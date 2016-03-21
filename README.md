@@ -8,10 +8,13 @@ output: html_document
 
 #Group Members
 Team 8 consists of four excellent members:
-1. Eric Ho, emh2213
-2. Xuan Zuo, xz2467
-3. Zehao Wang, zw2323
-4. Nicole LaPointe Jameson, nml2145
+1. Eric Ho | emh2213
+
+2. Xuan Zuo | xz2467
+
+3. Zehao Wang |zw2323
+
+4. Nicole LaPointe Jameson | nml2145
 
 #Project Abstract
 TEXT TEXT TEXT
