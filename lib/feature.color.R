@@ -35,6 +35,7 @@ feature <- function(img_dir, img_name, data_name=NULL){
   
   ### RBG Color Extraction
   
+  
   nR <- 10
   nG <- 8
   nB <- 10
@@ -45,6 +46,10 @@ feature <- function(img_dir, img_name, data_name=NULL){
       readImage(paste0(img_dir,list.files(img_dir)[i]))
 
     mat <- imageData(img)
+    # A multi-dimensional arrays containing the pixel intensities
+    # 394 by 500 by 3
+    # 450 by 313 by 3
+    # 500 by 402 by 3
     
     rBin <- seq(0, 1, length.out=nR)
     gBin <- seq(0, 1, length.out=nG)
