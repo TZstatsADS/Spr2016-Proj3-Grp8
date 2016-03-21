@@ -1,0 +1,9 @@
+---
+title: "Project Overview"
+author: "Team 8"
+date: "March 21, 2016"
+output: html_document
+---
+
+Outline of the steps we did in selecting our final model
+INSERT INSERT INSERT

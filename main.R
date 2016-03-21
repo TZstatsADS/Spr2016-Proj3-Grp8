@@ -13,29 +13,21 @@ img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
 img_train_names<-list.files(img_train_dir)
 img_test_names<-list.files(img_test_dir)
 
-### Import training images Breed Labels
-label_train <- read.table("data\\index_train.txt", header=F)
-label_test <- read.table("data\\index_test.txt", header=F)
-
-###Cleaned Up Breed Labels
-breed_index_train1 <- read.table("data\\breed_index_train1.txt", header=F)
-breed_index_test1 <- read.table("data\\breed_index_test1.txt", header=F)
-
 ### Import Breed Labels
 label_test <- scan("data\\breed_index_test1.txt")
 label_train <- scan("data\\breed_index_train1.txt")
 
-#######
-
-### Construct visual feature
+### Construct visual features
+#Color Histograms
 source("lib/feature.color.R")
 
 tm_feature_train <- system.time(dat_train <- feature(img_train_dir, img_train_names))
 tm_feature_test <- system.time(dat_test <- feature(img_test_dir, img_test_names))
 
 save(dat_train, file="./output/feature_train.RData")
-save(dat_train, file="./output/feature_test.RData")
+save(dat_test, file="./output/feature_test.RData")
 
+####
 
 ### Train a classification model with training images
 source("./lib/train.svm.R")
