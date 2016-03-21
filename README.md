@@ -1,24 +1,23 @@
-# Project CatsDogs: Predictive analytics-model evaluation and selection
-
-#### - for cats versus dogs image data
-
-Read [full project description](doc/project3_desc.md)
-
-In this project, we will carry out model evaluation and selection for predictive analytics on image data. As data scientists, we often need to evaluate different modeling/analysis strategies and decide what is the best. Such decisions need to be supported with sound evidence in the form of model assessment, validation and comparison. In addition, we also need to communicate our decision and supporting evidence clearly and convincingly in an accessible fashion.
-
-![image](https://i.ytimg.com/vi/8Ryo8Pf4NNE/hqdefault.jpg)
-
 ---
-Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
+title: "TBD"
+author: "Team 8"
+date: "March 21, 2016"
+output: html_document
+  theme: journal
+---
 
-```
-proj/
-├── lib/
-├── data/
-├── doc/
-├── figs/
-└── output/
-```
+#Group Members
+Team 8 consists of four excellent members:
+1. Eric Ho, emh2213
+2. Xuan Zuo, xz2467
+3. Zehao Wang, zw2323
+4. Nicole LaPointe Jameson, nml2145
 
-Please see each subfolder for a README file.
+#Project Abstract
+TEXT TEXT TEXT
 
+#The Final Model Selected
+INSERT FINAL MODEL DETAILS
+
+#Contribution Statement
+All team members contributed equally in all stages of this project. We trielessly communicated through Piazza, Email and Facebook to meet 2-3 times a week to work. All team members approve our work presented in this GitHub repository including this contributions statement. "
