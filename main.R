@@ -3,26 +3,29 @@
 #############################################
 
 ### Specify directories
-setwd("E:\\W4249 Applied Data Science\\cycle3cvd-team8\\")
+setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\")
 
-img_dir <- "..\\images\\"
+img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
 img_names <- list.files(img_dir)
 
-img_train_dir <- "..\\train\\"
-img_test_dir <- "..\\test\\"
+img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
+img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
 img_train_names<-list.files(img_train_dir)
 img_test_names<-list.files(img_test_dir)
+
 ### Import training images Breed Labels
-#label_train <- read.table("data\\index_train.txt", header=F)
-#label_test <- read.table("data\\index_test.txt", header=F)
+label_train <- read.table("data\\index_train.txt", header=F)
+label_test <- read.table("data\\index_test.txt", header=F)
+
+###Cleaned Up Breed Labels
+breed_index_train1 <- read.table("data\\breed_index_train1.txt", header=F)
+breed_index_test1 <- read.table("data\\breed_index_test1.txt", header=F)
 
 ### Import Breed Labels
-label_test <- scan("data\\breed_index_test.txt")
-label_train <- scan("data\\breed_index_train.txt")
+label_test <- scan("data\\breed_index_test1.txt")
+label_train <- scan("data\\breed_index_train1.txt")
 
-
-###############################################################################################
-
+#######
 
 ### Construct visual feature
 source("lib/feature.color.R")
