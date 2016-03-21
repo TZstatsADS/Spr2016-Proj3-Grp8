@@ -16,7 +16,7 @@ feature <- function(img_dir, img_name, data_name=NULL){
   
   ### load libraries
   library("EBImage")
-  
+
   n_files <- length(list.files(img_train_dir))
   
   ### determine img dimensions
@@ -36,11 +36,11 @@ feature <- function(img_dir, img_name, data_name=NULL){
   ### RBG Color Extraction
   
   nR <- 10
-  #nG <- 8
-  nG <- 4
+  nG <- 8
   nB <- 10
-  feature <- array(dim=c(400,nR*nG*nB))
-  for (i in 1:400){
+  feature <- array(dim=c(n_files,nR*nG*nB))
+  setwd("~/Desktop/train")
+  for (i in 1:n_files ){
     img <- readImage(list.files(img_train_dir)[i])
     mat <- imageData(img)
     
@@ -54,9 +54,10 @@ feature <- function(img_dir, img_name, data_name=NULL){
     feature[i,] <- rgb_feature
   }
   
-  
-  feature.t <- array(dim=c(400,nR*nG*nB))
-  for (i in 1:400){
+  setwd("~/Desktop/test")
+  n_files1 <- length(list.files(img_test_dir))
+  feature.t <- array(dim=c(n_files1,nR*nG*nB))
+  for (i in 1:n_files1){
     img <- readImage(list.files(img_test_dir)[i])
     mat <- imageData(img)
     

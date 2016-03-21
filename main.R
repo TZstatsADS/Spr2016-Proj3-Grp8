@@ -20,8 +20,8 @@ label_train <- read.table("data/index_train.txt", header=F)
 label_test <- read.table("data/index_test.txt", header=F)
 
 ### Import Breed Labels
-breed_index_test <- scan("data/breed_index_test.txt")
-breed_index_train <- scan("data/breed_index_train.txt")
+breed_index_test1 <- scan("data/breed_index_test1.txt")
+breed_index_train1 <- scan("data/breed_index_train1.txt")
 
 ###############################################################################################
 

@@ -50,9 +50,9 @@
  # svm.model <- svm(y = breed_index_train[1:400], x = feature, type = "C-classification")
  #  predict(svm.model,feature.t)
   
-  svm <- ksvm(x=feature,y=breed_index_train[1:400],type="nu-svc",kernel='rbf',C=100,scaled=c())
+  svm <- ksvm(x=feature,y=breed_index_train1,type="nu-svc",kernel='rbf',C=100,scaled=c())
   predict(svm,feature.t)
-  sum(predict(svm,feature.t)==breed_index_test[1:400])/400
+  sum(predict(svm,feature.t)==breed_index_test1)/n_files1
 
   #Look and understand what svp contains # General summary
   svp
