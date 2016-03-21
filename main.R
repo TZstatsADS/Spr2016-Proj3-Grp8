@@ -3,45 +3,45 @@
 #############################################
 
 ### Specify directories
-setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\")
+setwd("E:\\W4249 Applied Data Science\\cycle3cvd-team8\\")
 
-img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
-dir_names <- list.files(img_dir)
+img_dir <- "..\\images\\"
+img_names <- list.files(img_dir)
 
-img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
-img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test\\"
-
+img_train_dir <- "..\\train\\"
+img_test_dir <- "..\\test\\"
+img_train_names<-list.files(img_train_dir)
+img_test_names<-list.files(img_test_dir)
 ### Import training images Breed Labels
-
-label_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\index_train.txt", header=F)
-label_test <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\index_test.txt", header=F)
+#label_train <- read.table("data\\index_train.txt", header=F)
+#label_test <- read.table("data\\index_test.txt", header=F)
 
 ### Import Breed Labels
-breed_index_test <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_test.txt", header=F)
-breed_index_train <- read.table("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\data\\breed_index_train.txt", header=F)
+label_test <- scan("data\\breed_index_test.txt", header=F)
+label_train <- scan("data\\breed_index_train.txt", header=F)
 
 
 ###############################################################################################
 
 
 ### Construct visual feature
-source("./lib/feature.R")
+source("lib/feature.color.R")
 
-tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "img_train"))
-tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "img_test"))
+tm_feature_train <- system.time(dat_train <- feature(img_train_dir, img_train_names))
+tm_feature_test <- system.time(dat_test <- feature(img_test_dir, img_test_names))
 
 save(dat_train, file="./output/feature_train.RData")
 save(dat_train, file="./output/feature_test.RData")
 
 
 ### Train a classification model with training images
-source("./lib/train.R")
-source("./lib/test.R")
+source("./lib/train.svm.R")
+source("./lib/test.svm.R")
 
 ### Model selection with cross-validation
 # Choosing between different values of interaction depth for GBM
 source("./lib/cross_validation.R")
-depth_values <- seq(3, 11, 2)
+depth_values <- 10^seq(-2, 2, 1)
 err_cv <- array(dim=c(length(depth_values), 2))
 K <- 5  # number of CV folds
 for(k in 1:length(depth_values)){

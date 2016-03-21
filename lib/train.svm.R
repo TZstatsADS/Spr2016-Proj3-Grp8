@@ -44,18 +44,18 @@ train <- function(dat_train, label_train, par=NULL){
   library(kernlab)
 
   # train the SVM
-  svm <- ksvm(x=data_train,y=label_train,type="C-svc",kernel='vanilladot',C=100,scaled=c())
-
+  svm <- ksvm(x=dat_train,y=label_train,type="C-svc",kernel='vanilladot',C=par,scaled=c())
+  return(svm)
   #Look and understand what svp contains # General summary
-  svp
+  #svp
 
   # Attributes that you can access
-  attributes(svp)
+  #attributes(svp)
 
   # For example, the support vectors
-  alpha(svp)
-  alphaindex(svp)
-  b(svp)
+  #alpha(svp)
+  #alphaindex(svp)
+  #b(svp)
 }
   # Use the built-in function to pretty-plot the classifier
-  plot(svp,data=xtrain)
+  #plot(svp,data=xtrain)

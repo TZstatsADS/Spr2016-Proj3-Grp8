@@ -38,9 +38,12 @@ feature <- function(img_dir, img_name, data_name=NULL){
   nR <- 10
   nG <- 8
   nB <- 10
-  feature <- array(dim=c(n_files,nR*nG*nB))
-  for (i in 1:n_files){
-    img <- readImage(list.files(img_dir)[i])
+  dat <- array(dim=c(n_files,nR*nG*nB))
+  
+    for (i in 1:n_files){
+    img <- 
+      readImage(paste0(img_dir,list.files(img_dir)[i]))
+
     mat <- imageData(img)
     
     rBin <- seq(0, 1, length.out=nR)
@@ -50,13 +53,8 @@ feature <- function(img_dir, img_name, data_name=NULL){
                                     factor(findInterval(mat[,,2], gBin), levels=1:nG), 
                                     factor(findInterval(mat[,,3], bBin), levels=1:nB)))
     rgb_feature <- as.numeric(freq_rgb$Freq)/(ncol(mat)*nrow(mat)) 
-    feature[i,] <- rgb_feature
+    dat[i,] <- rgb_feature
   }
-  
-  
-
-  
-  
   
   ### output constructed features
   if(!is.null(data_name)){
