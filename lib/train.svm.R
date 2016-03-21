@@ -12,7 +12,7 @@ train <- function(dat_train, label_train, par=NULL){
   library(kernlab)
 
   # train the SVM
-  svm <- ksvm(x=dat_train,y=label_train,type="C-svc",kernel='vanilladot',C=par,scaled=c())
+  svm <- ksvm(x=dat_train,y=label_train,type="C-svc",kernel='vanilladot',C=par$depth,scaled=c())
   return(svm)
   
 }

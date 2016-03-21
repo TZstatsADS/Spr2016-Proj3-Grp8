@@ -36,7 +36,7 @@ source("./lib/test.tree.R")
 ### Model selection with cross-validation
 # Choosing between different values of interaction depth for GBM
 source("./lib/cross_validation.R")
-depth_values <- 10^seq(-2, 2, 1)
+depth_values <- seq(0.001, 0.01, 0.002)
 err_cv <- array(dim=c(length(depth_values), 2))
 K <- 5  # number of CV folds
 for(k in 1:length(depth_values)){
