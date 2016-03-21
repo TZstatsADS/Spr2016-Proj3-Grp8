@@ -17,8 +17,8 @@ img_test_names<-list.files(img_test_dir)
 #label_test <- read.table("data\\index_test.txt", header=F)
 
 ### Import Breed Labels
-label_test <- scan("data\\breed_index_test.txt", header=F)
-label_train <- scan("data\\breed_index_train.txt", header=F)
+label_test <- scan("data\\breed_index_test.txt")
+label_train <- scan("data\\breed_index_train.txt")
 
 
 ###############################################################################################
@@ -53,7 +53,7 @@ save(err_cv, file="./output/err_cv.RData")
 # Visualize CV results
 pdf("./fig/cv_results.pdf", width=7, height=5)
 plot(depth_values, err_cv[,1], xlab="Interaction Depth", ylab="CV Error",
-     main="Cross Validation Error", type="n", ylim=c(0, 0.15))
+     main="Cross Validation Error", type="n", ylim=c(0, 0.5))
 points(depth_values, err_cv[,1], col="blue", pch=16)
 lines(depth_values, err_cv[,1], col="blue")
 arrows(depth_values, err_cv[,1]-err_cv[,2],depth_values, err_cv[,1]+err_cv[,2], 
