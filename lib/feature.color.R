@@ -43,7 +43,9 @@ feature <- function(img_dir, img_name, data_name=NULL){
   
     for (i in 1:n_files){
     img <- 
-      readImage(paste0(img_dir,list.files(img_dir)[i]))
+      readImage(
+        #paste0(img_dir,
+        list.files(img_dir)[i])
 
     mat <- imageData(img)
     # A multi-dimensional arrays containing the pixel intensities
