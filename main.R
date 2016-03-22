@@ -16,6 +16,8 @@ img_test_names<-list.files(img_test_dir)
 ### Import Breed Labels
 label_test <- scan("data\\breed_index_test1.txt")
 label_train <- scan("data\\breed_index_train1.txt")
+label_test <- scan("data/breed_index_test1.txt")
+label_train <- scan("data/breed_index_train1.txt")
 
 ### Construct visual features
 #Color Histograms
