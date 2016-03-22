@@ -9,7 +9,7 @@ img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
 img_names <- list.files(img_dir)
 
 img_train_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
-img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\"
+img_test_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test\\"
 img_train_names<-list.files(img_train_dir)
 img_test_names<-list.files(img_test_dir)
 

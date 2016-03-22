@@ -9,4 +9,3 @@ mars.outcome <- ifelse(test = pred.mars >= .5, yes = 1, no= 0)
 n_length <- 2229
 
 (sum(mars.outcome == label_test) / n_length )* 100
-
