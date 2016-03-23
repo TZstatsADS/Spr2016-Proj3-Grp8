@@ -22,7 +22,7 @@ label_train <- scan("data/breed_index_train1.txt")
 
 ### Construct visual features
 #Color Histograms
-source("lib/feature.color.R")
+source("lib/feature.R")
 
 setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\")
 tm_feature_train <- system.time(dat_train <- feature(img_train_dir, img_train_names))
@@ -32,17 +32,17 @@ tm_feature_test <- system.time(dat_test <- feature(img_test_dir, img_test_names)
 
 
 setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\output\\")
-save(dat_train, file="./output/feature_train.RData")
+save(dat_train, file="./output/feature_train_comb.RData")
 save(dat_train, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\output\\feature_train.RData")
 
-save(dat_test, file="./output/feature_test.RData")
+save(dat_test, file="./output/feature_test_comb.RData")
 save(dat_test, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\output\\feature_test.RData")
 
 ####
 
 ### Train a classification model with training images
-source("./lib/train.tree.R")
-source("./lib/test.tree.R")
+source("./lib/train.R")
+source("./lib/test.R")
 
 ### Model selection with cross-validation
 # Choosing between different values of interaction depth for GBM
