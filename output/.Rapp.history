@@ -1,1 +1,2 @@
 load("/Users/jadiezuo/Documents/cycle3cvd-team8/output/pred_test.RData")
+load("/Users/jadiezuo/Documents/cycle3cvd-team8/output/feature_trainmean.RData")

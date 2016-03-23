@@ -4,6 +4,7 @@
 
 ### Specify directories
 setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\")
+setwd("~/Documents/cycle3cvd-team8")
 
 img_dir <- "C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\AnimalImg\\"
 img_names <- list.files(img_dir)
