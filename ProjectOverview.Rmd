@@ -147,7 +147,7 @@ We started with a high number of trees and decreased that value until finding th
 
 
 ###MARS
-A MARS model, or multivariate adaptive regression splines, is a non-parametric regression tehcnique that automatically models nonlinearities and interactions between variables. It is a nonlinear statistical piecewise model.
+A MARS model, or multivariate adaptive regression splines, is a non-parametric regression technique that automatically models nonlinearities and interactions between variables. It is a nonlinear statistical piecewise model.
 
 The model function is based on hinge functions of a predictor. When this enters the model, the new features are then added to a basic linear regression model to estimate the slopes and intercepts between the outcome features. 
 
@@ -159,7 +159,7 @@ A Tree model partitions data into smaller groups that are more homogeneous with 
 To tune the tree, we tried splits 10,20,30,40,50 and 50 was best based on accuracy performance. The tree is not the most reproducible or interpretable though.
 
 ###Neural Net
-Neural net is an unsupervised technique that is essentially a black box; you put in your input, who knows what happens to get the output! Neural net takes in input for the first layer, uses the output of the first layer as input for the second layer, and so forth for multiple layers until the result is outputted. 
+Neural net is an unsupervised technique that is essentially a black box; you put in your input, who knows what happens to be the output! Neural net takes in input for the first layer, uses the output of the first layer as input for the second layer, and so forth for multiple layers until the result is outputted. 
 
 More generally (and superficially), the NN aims to minimize an alternative version of the sum of the squared errors of a given lambda. After training,lambda (regularization value) falls between 0 and .1.
 
