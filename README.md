@@ -23,4 +23,4 @@ TEXT TEXT TEXT
 INSERT FINAL MODEL DETAILS
 
 #Contribution Statement
-All team members contributed equally in all stages of this project. We trielessly communicated through Piazza, Email and Facebook to meet 2-3 times a week to work. All team members approve our work presented in this GitHub repository including this contributions statement. "
+All team members contributed equally in all stages of this project. We tirelessly communicated through Piazza, email and Facebook to meet 2-3 times a week to work. All team members approve our work presented in this GitHub repository including this contributions statement. "

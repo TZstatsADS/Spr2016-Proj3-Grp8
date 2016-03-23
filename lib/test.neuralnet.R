@@ -2,7 +2,7 @@ library(neuralnet)
 library(MASS)
 library(grid)
 
-fittednet.results <- compute(fittednet, dat_test)
+fittednet.results <- compute(fittednet, dat.t)
 
 results = fittednet.results$net.result
 
@@ -12,4 +12,4 @@ n_length <- 2229
 
 (sum(neuralnet.outcome == label_test) / n_length )* 100
 
-#67.83310902% accuracy. Meh.
+#67%
