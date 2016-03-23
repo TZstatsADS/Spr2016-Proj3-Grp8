@@ -42,10 +42,14 @@ feature <- function(img_dir, img_name, data_name=NULL){
   dat <- array(dim=c(n_files,nR*nG*nB))
   
     for (i in 1:n_files){
-    img <- 
+    if(i==121){
+      dat[i,]=array(0,dim=c(1,800))
+    }
+    else{
+      img <- 
       readImage(
         #paste0(img_dir,
-        list.files(img_dir)[i])
+        paste0(img_dir,list.files(img_dir)[i]))
 
     mat <- imageData(img)
     # A multi-dimensional arrays containing the pixel intensities
@@ -61,6 +65,8 @@ feature <- function(img_dir, img_name, data_name=NULL){
                                     factor(findInterval(mat[,,3], bBin), levels=1:nB)))
     rgb_feature <- as.numeric(freq_rgb$Freq)/(ncol(mat)*nrow(mat)) 
     dat[i,] <- rgb_feature
+    }
+      
   }
   
   ### output constructed features
