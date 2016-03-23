@@ -17,7 +17,7 @@ We set out to find a model that balances quite a few factors. The group decided 
 
 
 1. Good performance 
-    + Greater than 65% accuracy
+    + Greater than 60% accuracy
 2. Fast computation time
 3. Ease of conceptual understanding
     + To better convey what is happening to colleages as well as the client
@@ -25,7 +25,7 @@ We set out to find a model that balances quite a few factors. The group decided 
     + Or ease of reproducability. Code that isnt complex, easily adaptible
 
 
-To carry out these goals, we decided to take the approach of fitting a **variety of models** on a **baseline feature**, then carried out a quasi- forward stepwise selection of all the models with their added features, removed or kept based on their ranking on the above four components.
+To carry out these goals, we decided to take the approach of fitting a **variety of models** on a **baseline feature**, then carried out a quasi- *forward stepwise selection* of all the models with their added features, removed or kept based on their ranking on the above four components.
 
 ***
 
@@ -174,6 +174,17 @@ We used the same cross-validation methods after training and tuning each model (
 
 ##The Method
 To carry out this CV, one splits the data into K blocks of equal size. You then leave out first block and fit a model to predict the held-out block on. Performance of this validation based on hold-out predictions.The number (K) of folds is usually between 5-10. We opted for 5 after looking at performance. 
+
+##Results
+We graphed the CV error for our final 2 model contenders, the SVM and Tree. The **SVM** produced the following:
+
+![Svm Model CV](http://i.imgur.com/39fFbP6.png)
+
+Then, the **tree** model produced the following:
+
+![Tree Model CV](http://i.imgur.com/D8jUye7.png)
+
+Both which helped us further tune and determine our model.
 
 #The Final Model
 
