@@ -24,11 +24,19 @@ label_train <- scan("data/breed_index_train1.txt")
 #Color Histograms
 source("lib/feature.color.R")
 
+setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\train\\")
 tm_feature_train <- system.time(dat_train <- feature(img_train_dir, img_train_names))
+
+setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\Project3\\test\\")
 tm_feature_test <- system.time(dat_test <- feature(img_test_dir, img_test_names))
 
+
+setwd("C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\output\\")
 save(dat_train, file="./output/feature_train.RData")
+save(dat_train, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\output\\feature_train.RData")
+
 save(dat_test, file="./output/feature_test.RData")
+save(dat_test, file="C:\\Users\\NMLJ\\Documents\\GitHub\\cycle3cvd-team8\\cycle3cvd-team8\\output\\feature_test.RData")
 
 ####
 
