@@ -1,9 +1,212 @@
 ---
-title: "Project Overview"
-author: "Team 8"
-date: "March 21, 2016"
-output: html_document
+title: "The Paw-sitively Best Classification Model"
+author: "Team 8: Eric Ho, Xuan Zuo, Zehao Wang, Nicole LaPointe Jameson"
+output: 
+  html_document:
+    theme: spacelab
+    highlight: espresso
+    toc: true
+    toc_float:
+      collapsed: true
 ---
+#Introduction and Initial Goals
 
-Outline of the steps we did in selecting our final model
-INSERT INSERT INSERT
+![Cat Vs. Dog! GRRR](https://i.ytimg.com/vi/IiilA0dsciY/maxresdefault.jpg)
+
+We set out to find a model that balances quite a few factors. The group decided to look at numerous components of what makes a model "good" which finally concluded with:
+
+
+1. Good performance 
+    + Greater than 65% accuracy
+2. Fast computation time
+3. Ease of conceptual understanding
+    + To better convey what is happening to colleages as well as the client
+4. Parsimonious
+    + Or ease of reproducability. Code that isnt complex, easily adaptible
+
+
+To carry out these goals, we decided to take the approach of fitting a **variety of models** on a **baseline feature**, then carried out a quasi- forward stepwise selection of all the models with their added features, removed or kept based on their ranking on the above four components.
+***
+#Setting Up The Environment
+
+##Packages Used
+The following packages were used in our project
+
+```{r, message=FALSE, warning=FALSE}
+library(MASS)
+library(mda)
+library(rpart)
+library(EBImage)
+library(gbm)
+library(neuralnet)
+library(grid)
+library(Momocs)
+library(data.table)
+library(XML)
+```
+
+##Data Cleaning Overview
+
+1. Image Removal
+  + All images that were not properly formatted or compressed as .jpg were removed (14 total, list of which can be found on piazza). We also removed the trimap folder.
+2. Data Partioning
+  + We then partitioned the data into a testing and training set, where the training set was finally established to **70%**, and the testing set was finally set to **30%** (after playing with paritions from 60/40 to 90/10) based on the best results, and avoidance of fitting to individual predictor noise.
+3. Breed Labels
+  + Running the provided loop, we created breed labels, and produced a binary indexing vector of if each image was a cat or dog for both training and testing sets, to aid in supervised modeling.
+4. XML Annotations
+  + We also pulled the XML annotations from the images using a loop function as well, but ended up not using these in the final model. 
+5. Uniform Resizing
+  + We wished to see if the loss in picture granulairty would aid in speed and performance, but this new "data set" of resized images was not used for the final model either.
+
+***
+
+#Baseline Feature: Color Histograms
+The first feature we decided on to use as our baseline feature for all the models was the color histograms of RGB values pulled from each image.
+
+The Histograms looked like this:
+*Insert Color Histogram Example Image*
+
+We kept this feature in our final model.
+
+
+#Model 1: SVM
+##What it is
+Support Vector Machine, or SVM is a supervised learning algorithm that aims to maximize the margin of the training data (or, maximize the support vectors). 
+##The Fit
+
+```{r}
+
+```
+##Its Results
+TEXT
+###Time
+```{r}
+
+```
+###Accuracy
+```{r}
+
+```
+#Model 2: GBM
+##What it is
+TEXT
+##The Fit
+```{r}
+
+```
+##Its Results
+TEXT
+###Time
+```{r}
+
+```
+###Accuracy
+```{r}
+
+```
+
+#Model 3: MARS
+##What it is
+TEXT
+##The Fit
+```{r}
+
+```
+##Its Results
+```{r}
+
+```
+###Time
+```{r}
+
+```
+###Accuracy
+```{r}
+
+```
+#Model 4: Tree
+##What it is
+TEXT
+##The Fit
+```{r}
+
+```
+##Its Results
+```{r}
+
+```
+###Time
+```{r}
+
+```
+###Accuracy
+```{r}
+
+```
+#Model 5: Neural Net
+##What it is
+TEXT
+##The Fit
+```{r}
+
+```
+##Its Results
+TEXT
+###Time
+```{r}
+
+```
+###Accuracy
+```{r}
+
+```
+#Model 6: BOW
+##What it is
+TEXT
+##The Fit
+```{r}
+
+```
+##Its Results
+TEXT
+###Time
+```{r}
+
+```
+###Accuracy
+```{r}
+
+```
+#Additional Features
+##Contour Plot Values
+###Intuition
+Text
+###Execution
+Summation of the image of the outline
+
+## Pixel Brightness Intensity
+###Intuition
+Text
+###Execution
+For this feature, we converted each image to a matrix, and then greyscaled the image with EBImage. Then, each pixel brightness itensity was taken for each pixel in the matrix. 
+
+We then used the mean value 
+#Cross Validation Methods
+1. K fold
+
+##Tuning Parameters
+Tree: tried 10,20,30,40,50 and 50 was best 
+
+#The Final Model
+
+##Overall Summary Table
+
+Model | Accuracy | Time to Run | Understandable? | Parsimonious?|
+------|----------|-------------|-----------------|--------------|
+SVM   | 68.0     | text        | text            | text         |
+GBM   | Text     | text        | text            | text         |
+MARS  | Text     | text        | text            | text         |
+Tree  | Text     | text        | text            | text         |
+NN    | Text     | text        | text            | text         |
+
+##The Model We Selected
