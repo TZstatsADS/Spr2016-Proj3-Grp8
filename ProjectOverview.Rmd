@@ -20,9 +20,9 @@ We set out to find a model that balances quite a few factors. The group decided 
     + Greater than 65% accuracy
 2. Fast computation time
 3. Ease of conceptual understanding
-    + To better convey what is happening to colleages as well as the client
+    + To better convey what is happening to colleagues as well as the client
 4. Parsimonious
-    + Or ease of reproducability. Code that isnt complex, easily adaptible
+    + Or ease of reproducibility. Code that isn't complex and is easily adaptible
 
 
 To carry out these goals, we decided to take the approach of fitting a **variety of models** on a **baseline feature**, then carried out a quasi- forward stepwise selection of all the models with their added features, removed or kept based on their ranking on the above four components.
@@ -55,7 +55,7 @@ library(jpeg)
 2. Data Partioning/Relevant Preprocessing
   + We then partitioned the data into a testing and training set, where the training set was finally established to **70%**, and the testing set was finally set to **30%** (after playing with paritions from 60/40 to 90/10) based on the best results, and avoidance of fitting to individual predictor noise.
 3. Breed Labels
-  + Running the provided loop, we created breed labels, and produced a binary indexing vector of if each image was a cat or dog for both training and testing sets, to aid in supervised modeling.
+  + Running the provided loop, we created breed labels, and produced a binary indexing vector of whether each image was a cat or dog for both training and testing sets, to aid in supervised modeling.
 4. XML Annotations
   + We also pulled the XML annotations from the images using a loop function as well, but ended up not using these in the final model. 
 5. Uniform Resizing
@@ -133,12 +133,12 @@ hist(img950)
 #The Models Used, Why, And How They Were Tuned 
 The goal was to establish a variety of modeling methods on a few good features to maximize all of our goals.
 
-We were very cautious in regards to **over-fitting**, which is when the output of your model is too exact. It correctly predicts every sample, and learns not only the general patterns but also each samples unique noise.
+We were very cautious in regards to **over-fitting**, which is when the output of your model is too exact. It correctly predicts every sample, and learns not only the general patterns but also each sample's unique noise.
 
 ###SVM
-Support Vector Machine, or SVM is a supervised learning algorithm that aims to maximize the margin of the training data (or, maximize the support vectors). Feature selection is very important with SVM becuase minimizing SSE can be influenced by just one observation. 
+Support Vector Machine, or SVM is a supervised learning algorithm that aims to maximize the margin of the training data (or, maximize the support vectors). Feature selection is very important with SVM because minimizing SSE can be influenced by just one observation. 
 
-It is good in that it does carry out automatic feature selection. In layman's terms, it creates a "funnel" (or hyperplane) around a regression line, and residual values that fall within that funnel are not included in the paramter estimation.
+It is good in that it does carry out automatic feature selection. In layman's terms, it creates a "funnel" (or hyperplane) around a regression line, and residual values that fall within that funnel are not included in the parameter estimation.
 
 ###GBM
 GBM, or generalized/gradient boosted regression model is a boosted regression tree model, that we carried out backwards stepwise regression with to pick features. 
@@ -156,7 +156,7 @@ Unlike SVM, it is interpretable, and it does automatic feature selection.
 ###Model Tree
 A Tree model partitions data into smaller groups that are more homogenous with respect to the response. Through tuning and training, one can dtermine the predictor to split on, the depth/complexity of the tree, and the prediction equation in terminal nodes.
 
-To tune the tree, we tried splits10,20,30,40,50 and 50 was best based on accuracy performance. The tree is not the most reproducable or interpretible though.
+To tune the tree, we tried splits 10,20,30,40,50 and 50 was best based on accuracy performance. The tree is not the most reproducible or interpretable though.
 
 ###Neural Net
 The neural net is an unsupervised technique that is essentially a black box; you put in your input, who knows what happens to get the output!
