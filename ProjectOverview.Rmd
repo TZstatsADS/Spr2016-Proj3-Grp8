@@ -51,20 +51,20 @@ library(jpeg)
 ##Data Cleaning Overview
 
 1. Image Removal
-  + All images that were not properly formatted or compressed as .jpg were removed (14 total, list of which can be found on piazza). We also removed the trimap folder.
-2. Data Partioning/Relevant Preprocessing
-  + We then partitioned the data into a testing and training set, where the training set was finally established to **70%**, and the testing set was finally set to **30%** (after playing with paritions from 60/40 to 90/10) based on the best results, and avoidance of fitting to individual predictor noise.
+  + All images that were not properly formatted or compressed as .jpg were removed (14 total, list of which can be found on Piazza). We also removed the trimap folder.
+2. Data Partitioning/Relevant Preprocessing
+  + We then partitioned the data into testing and training sets, where the training set was finally established to **70%**, and the testing set was finally set to **30%** (after playing with partitions from 60/40 to 90/10) based on the best results, and avoidance of fitting to individual predictor noise.
 3. Breed Labels
   + Running the provided loop, we created breed labels, and produced a binary indexing vector of whether each image was a cat or dog for both training and testing sets, to aid in supervised modeling.
 4. XML Annotations
   + We also pulled the XML annotations from the images using a loop function as well, but ended up not using these in the final model. 
 5. Uniform Resizing
-  + We wished to see if the loss in picture granulairty would aid in speed and performance, but this new "data set" of resized images was not used for the final model either.
+  + We wished to see if the loss in picture granularity would aid in speed and performance, but this new "data set" of resized images was not used for the final model either.
 
 ***
 
 #Baseline Feature: Color Histograms
-The first feature we decided on to use as our baseline feature for all the models was the color histograms of RGB values pulled from each image. We determined from some analysis that dogs tended to have more green in their histograms, while cats had more blue values. We did not resize the images before carrying this out to imporve accuracy and not lose information.
+The first feature we decided on to use as our baseline feature for all the models was the color histograms of RGB values pulled from each image. We determined from some analysis that dogs tended to have more green in their histograms, while cats had more blue values. We did not resize the images before carrying this out to improve accuracy and not lose information.
 
 The Histograms looked like this:
 ```{r, echo=FALSE}
@@ -106,7 +106,7 @@ display(img3)
 
 ###Intuition
 
-Under the hunch that dogs and cats tend to be photographed in different type of light environments, (such as dogs are more likely to be outside), we took a random sample (n=30) of images, and tested to see if the difference between the mean brightness itensity between dogs and cats was different. The results were statistically significant (p <.05), so we used this as another feature.
+Under the hunch that dogs and cats tend to be photographed in different type of light environments, (such as dogs are more likely to be outside), we took a random sample (n=30) of images, and tested to see if the difference between the mean brightness intensity between dogs and cats was different. The results were statistically significant (p <.05), so we used this as another feature.
 
 ###Execution
 ```{r, error=FALSE, message=FALSE}
@@ -147,19 +147,20 @@ We started with a high number of trees and decreased that value until finding th
 
 
 ###MARS
-A MARS model, or multivariate adaptive regression splines, is a non-parametric gregression tehcnique that automatically models nonlinearities and interactions between variables. It is a nonlinear statistical piecewise model.
+A MARS model, or multivariate adaptive regression splines, is a non-parametric regression tehcnique that automatically models nonlinearities and interactions between variables. It is a nonlinear statistical piecewise model.
 
 The model function is based on hinge functions of a predictor. When this enters the model, the new features are then added to a basic linear regression model to estimate the slopes and intercepts between the outcome features. 
 
 Unlike SVM, it is interpretable, and it does automatic feature selection.
 
 ###Model Tree
-A Tree model partitions data into smaller groups that are more homogenous with respect to the response. Through tuning and training, one can dtermine the predictor to split on, the depth/complexity of the tree, and the prediction equation in terminal nodes.
+A Tree model partitions data into smaller groups that are more homogeneous with respect to the response. Through tuning and training, one can dtermine the predictor to split on, the depth/complexity of the tree, and the prediction equation in terminal nodes.
 
 To tune the tree, we tried splits 10,20,30,40,50 and 50 was best based on accuracy performance. The tree is not the most reproducible or interpretable though.
 
 ###Neural Net
-The neural net is an unsupervised technique that is essentially a black box; you put in your input, who knows what happens to get the output!
+Neural net is an unsupervised technique that is essentially a black box; you put in your input, who knows what happens to get the output! Neural net takes in input for the first layer, uses the output of the first layer as input for the second layer, and so forth for multiple layers until the result is outputted. 
+
 More generally (and superficially), the NN aims to minimize an alternative version of the sum of the squared errors of a given lambda. After training,lambda (regularization value) falls between 0 and .1.
 
 
@@ -173,7 +174,7 @@ We used the same cross-validation methods after training and tuning each model (
 ![K-Fold Cross Validation Graphic](http://i.imgur.com/l6sN53u.jpg)
 
 ##The Method
-To carry out this CV, one splits the data into K blocks of equal size. You then leave out first block and fit a model to predict the held-out block on. Performance of this validation based on hold-out predictions.The number (K) of folds is usually between 5-10. We opted for 5 after looking at performance. 
+To carry out this CV, one splits the data into K blocks of equal size. You then leave out first block and fit a model to predict the held-out block on. Performance of this validation based on hold-out predictions. The number (K) of folds is usually between 5-10. We opted for 5 after looking at performance. 
 
 #The Final Model
 
